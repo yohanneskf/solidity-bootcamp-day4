@@ -2,7 +2,6 @@
 pragma solidity ^0.8.20;
 
 contract Bank {
-
     mapping(address => uint256) private balances;
 
     // Deposit ETH
@@ -19,7 +18,7 @@ contract Bank {
         balances[msg.sender] -= amount;
 
         // Use call safely
-        (bool success, ) = payable(msg.sender).call{value: amount}("");
+        (bool success,) = payable(msg.sender).call{value: amount}("");
         require(success, "Transfer failed");
     }
 

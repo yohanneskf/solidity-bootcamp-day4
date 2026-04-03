@@ -5,7 +5,6 @@ import "forge-std/Test.sol";
 import "../src/Bank.sol";
 
 contract BankTest is Test {
-
     Bank bank;
     address user = address(1);
 
