@@ -18,7 +18,8 @@ contract Bank {
 
         balances[msg.sender] -= amount;
 
-        (bool success, ) = msg.sender.call{value: amount}("");
+        // Use call safely
+        (bool success, ) = payable(msg.sender).call{value: amount}("");
         require(success, "Transfer failed");
     }
 

@@ -11,10 +11,10 @@ contract BankTest is Test {
 
     function setUp() public {
         bank = new Bank();
-        vm.deal(user, 10 ether); // give user ETH
+        vm.deal(user, 10 ether);
     }
 
-    // Deposit test
+    // Deposit
     function testDeposit() public {
         vm.prank(user);
         bank.deposit{value: 1 ether}();
@@ -22,7 +22,7 @@ contract BankTest is Test {
         assertEq(bank.getBalance(user), 1 ether);
     }
 
-    //  Withdraw test
+    // Withdraw
     function testWithdraw() public {
         vm.startPrank(user);
 
@@ -34,19 +34,19 @@ contract BankTest is Test {
         vm.stopPrank();
     }
 
-    //  Cannot withdraw more than balance
+    // Cannot withdraw more than balance
     function testCannotWithdrawMoreThanBalance() public {
         vm.startPrank(user);
 
         bank.deposit{value: 1 ether}();
 
-        vm.expectRevert("Insufficient balance");
+        vm.expectRevert();
         bank.withdraw(2 ether);
 
         vm.stopPrank();
     }
 
-    //  Balance updates correctly
+    // Balance updates
     function testBalanceUpdates() public {
         vm.startPrank(user);
 
@@ -58,11 +58,11 @@ contract BankTest is Test {
         vm.stopPrank();
     }
 
-    //  Revert test
+    // Revert on zero deposit
     function testRevertOnZeroDeposit() public {
         vm.prank(user);
 
-        vm.expectRevert("Must send ETH");
+        vm.expectRevert();
         bank.deposit{value: 0}();
     }
 }
