@@ -1,66 +1,28 @@
-## Foundry
+# Day 4 - Bank Contract (Foundry)
 
-**Foundry is a blazing fast, portable and modular toolkit for Ethereum application development written in Rust.**
+## Description
 
-Foundry consists of:
+A simple Ethereum smart contract that allows users to deposit, withdraw, and check their ETH balance.
 
-- **Forge**: Ethereum testing framework (like Truffle, Hardhat and DappTools).
-- **Cast**: Swiss army knife for interacting with EVM smart contracts, sending transactions and getting chain data.
-- **Anvil**: Local Ethereum node, akin to Ganache, Hardhat Network.
-- **Chisel**: Fast, utilitarian, and verbose solidity REPL.
+## Features
 
-## Documentation
+- Deposit ETH
+- Withdraw ETH
+- Check balance
 
-https://book.getfoundry.sh/
+## Test Cases
 
-## Usage
+- Deposit works correctly
+- Withdraw works correctly
+- Cannot withdraw more than balance
+- Balance updates properly
+- Revert conditions tested
 
-### Build
+## How to Run
 
-```shell
-$ forge build
-```
+Install Foundry first.
 
-### Test
+Then run:
 
-```shell
-$ forge test
-```
-
-### Format
-
-```shell
-$ forge fmt
-```
-
-### Gas Snapshots
-
-```shell
-$ forge snapshot
-```
-
-### Anvil
-
-```shell
-$ anvil
-```
-
-### Deploy
-
-```shell
-$ forge script script/Counter.s.sol:CounterScript --rpc-url <your_rpc_url> --private-key <your_private_key>
-```
-
-### Cast
-
-```shell
-$ cast <subcommand>
-```
-
-### Help
-
-```shell
-$ forge --help
-$ anvil --help
-$ cast --help
-```
+forge build
+forge test
